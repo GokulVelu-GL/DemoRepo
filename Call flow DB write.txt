@@ -1,0 +1,54 @@
+Call flow DB write
+
+Call NEW:
+
+	1.billingRepo.isDailogAvaliable
+	2.billingrepo.getUserDoc
+	3.resellerhashmap
+	4.billingService.getAlltariffCodesByParent
+
+		1.resellerHashMap(reload)
+		2.getSubscriberValidVoucher
+			1.getuserDoc
+			2.getVoucherDoc
+			3.ValidateVoucher
+				1.getUserDoc
+				2.setVoucherStatus
+				3.fetchAndUpdateBalanceWithTransactionEntry
+				4.addFundTransactionEntry
+				5.removeVocFromSubscriberVocList * 2
+	5.getVoucherDoc
+	6.getCallCount
+	7.saveDialog
+	8.getMinituesAndReserveByPulse
+
+	//	1.getUserDoc
+	//	2.getUserDoc
+	//	3.getVoucherDoc
+	//	4.updateDialogEndTime
+	//	5.ValidateVoucher
+				1.getUserDoc
+				2.setVoucherStatus
+				3.fetchAndUpdateBalanceWithTransactionEntry
+				4.addFundTransactionEntry
+				5.removeVocFromSubscriberVocList * 2
+		6.vbal < (cost)	
+			Step 4 & 5 repeat again		
+		7.amt < (cost)
+			Step 4 repeat again		
+
+Call Answered :
+
+		1.getBillingDialog
+		2.confirmDialog
+
+Call end  :
+
+		1.handleCallEnd
+			1.getBillingDialog
+			2.fetchAndUpdateBalance
+			3.updateDialogWithRefundAmount
+		2.writeCDR
+			1.getBillingDialog	
+		3.deleteDialog
+		4.cancellableMap
