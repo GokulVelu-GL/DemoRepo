@@ -22,11 +22,7 @@ Call NEW:
 	7.saveDialog
 	8.getMinituesAndReserveByPulse
 
-	//	1.getUserDoc
-	//	2.getUserDoc
-	//	3.getVoucherDoc
-	//	4.updateDialogEndTime
-	//	5.ValidateVoucher
+	
 				1.getUserDoc
 				2.setVoucherStatus
 				3.fetchAndUpdateBalanceWithTransactionEntry
